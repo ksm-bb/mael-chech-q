@@ -48,18 +48,18 @@
     // 🎨 📝 โน้ตสี: ตัวแปรหลักที่ใช้ควบคุมสีทั้งหมดในเว็บ
     // ==========================================
     const COLORS = {
-      blue: '#fdedee',      // สีของป้ายสถานะหรือพื้นหลังอ่อนๆ
-      pink: '#fddfe7',      // สีหลักของกลีบดอกไม้ และพื้นหลังบางจุด
-      purple: '#fffafc',    // สีไฮไลท์จุดสว่าง
-      orange: '#fffae7',    // สีเกสรดอกไม้ และสีขอบ
-      bg: '#fdedee',        // สีพื้นหลังรวมของหน้าเว็บทั้งหมด
-      white: '#fffbf0',     // สีขาว (การ์ด, ตัวอักษรบนพื้นเข้ม)
-      textMain: '#f9bcce', // สีตัวอักษรหลัก (Headings, ตัวเลขใหญ่ๆ)
-      textSoft: '#fbd3de', // สีตัวอักษรรอง (Subtext)
-      pinkDeep: '#f7afc5', // สีเน้น (ปุ่ม, จุดที่ต้องการให้เด่น)
-      blueDeep: '#f7afc5', // สีตัวอักษรบนป้ายสถานะที่ต้องการความคมชัด
-      purpleDeep: '#f7afc5', // สีตัวเลขเปอร์เซ็นต์ % หรือป้าย Channel
-      orangeDeep: '#f7afc5', // สีปุ่มกด, แถบสถานะ Channel
+      blue: '#fdedee',
+      pink: '#fddfe7',
+      purple: '#fffafc',
+      orange: '#fffae7',
+      bg: '#fdedee',
+      white: '#fffbf0',
+      textMain: '#f9bcce',
+      textSoft: '#fbd3de',
+      pinkDeep: '#f7afc5',
+      blueDeep: '#f7afc5',
+      purpleDeep: '#f7afc5',
+      orangeDeep: '#f7afc5',
     };
 
     const formatDriveLink = (url) => {
@@ -106,44 +106,21 @@
           <div className="absolute left-6 top-1/2 -translate-y-1/2 w-24 h-8 bg-[#fddfe7]/40 blur-xl rounded-full"></div>
           <div className="flex flex-col justify-center ml-2 relative z-10">
             <div className="flex items-center gap-1">
-           <h1 
-  className="text-m font-black italic tracking-tighter flex"
-  style={{ fontFamily: 'Prompt, sans-serif' }}
->
-  {/* หั่นคำแบบจับกลุ่มสระและวรรณยุกต์ไว้ด้วยกันแทนการใช้ split('') */}
-  {["เ", "ช็", "ค", "ง", "า", "น", "ร้", "า","น","ม","า","เ","อ","ล"].map((char, index) => (
-    <span
-      key={index}
-      className={`bg-gradient-to-br from-[#f9bcce] to-[#fbd3de] bg-clip-text text-transparent drop-shadow-sm inline-block animate-text-wave pb-2 pr-[1.5px]`}
-      style={{ animationDelay: `${index * 0.1}s` }}
-    >
-      {char}
-    </span>
-  ))}
-</h1>
-<button onClick={() => isAdmin ? setIsAdmin(false) : setShowAuthModal(true)} className={`px-1.5 py-0.5 ml-1 rounded-full text-[7px] font-black uppercase tracking-widest border shadow-sm transition-all active:scale-95 ${isAdmin ? 'bg-white/60 text-[#fbd3de] border-[#FCF6DE]' : 'bg-gray-100/80 text-gray-400 border-gray-200'}`}>
-                {isAdmin ? 'Admin' : 'Guest'}
-              </button>
-            </div>
-            <div className="flex items-center gap-1.5 opacity-70">
-              <div className="w-3 h-[1px]" style={{ backgroundColor: COLORS.pinkDeep }}></div>
-              <p className="text-[8px] font-black tracking-[0.5em] uppercase" style={{ color: COLORS.purpleDeep }}>Check Q</p>
-            </div>
-          </div>
-          <div onClick={isAdmin ? handleImageUpload : undefined} className={`w-16 h-16 rounded-[1.25rem] bg-white border-2 border-white flex items-center justify-center relative overflow-hidden transition-transform ${isAdmin ? 'cursor-pointer hover:scale-105 active:scale-95' : ''}`}>
-            {profileImage ? (
-              <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
-            ) : (
-              <>
-                <div className="absolute inset-0 opacity-40" style={{ background: `linear-gradient(to top right, ${COLORS.pink}, ${COLORS.blue})` }}></div>
-                <span className="text-2xl relative z-10 select-none">🐰</span>
-              </>
-            )}
-          </div>
-        </div>
-      </div>
-    ));
-              <button onClick={() => isAdmin ? setIsAdmin(false) : setShowAuthModal(true)} className={`px-1.5 py-0.5 ml-1 rounded-full text-[7px] font-black uppercase tracking-widest border shadow-sm transition-all active:scale-95 ${isAdmin ? 'bg-white/60 text-[#fbd3de] border-[#FCF6DE]' : 'bg-gray-100/80 text-gray-400 border-gray-200'}`}>
+              <h1 
+                className="text-m font-black italic tracking-tighter flex"
+                style={{ fontFamily: 'Prompt, sans-serif' }}
+              >
+                {["เ", "ช็", "ค", "ง", "า", "น", "ร้", "า","น","ม","า","เ","อ","ล"].map((char, index) => (
+                  <span
+                    key={index}
+                    className={`bg-gradient-to-br from-[#f9bcce] to-[#fbd3de] bg-clip-text text-transparent drop-shadow-sm inline-block animate-text-wave pb-2 pr-[1.5px]`}
+                    style={{ animationDelay: `${index * 0.1}s` }}
+                  >
+                    {char}
+                  </span>
+                ))}
+              </h1>
+              <button onClick={() => isAdmin ? setIsAdmin(false) : setShowAuthModal(true)} className={`px-1.5 py-0.5 ml-1 rounded-full text-[7px] font-black uppercase tracking-widest border shadow-sm transition-all active:scale-95 ${isAdmin ? 'bg-white/60 text-[#6CA9D6] border-[#FCF6DE]' : 'bg-gray-100/80 text-gray-400 border-gray-200'}`}>
                 {isAdmin ? 'Admin' : 'Guest'}
               </button>
             </div>
@@ -404,8 +381,6 @@
       // ==========================================
       // 🌟 ตั้งค่าเชื่อมต่อ API (GitHub -> Google Sheets)
       // ==========================================
-      
-      // 🚨 ลบภาษาไทยด้านล่างออก แล้วเอา URL Web App ของโปรเจกต์นี้มาใส่แทนในเครื่องหมาย " " 🚨
       const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxbfQy7SE_5OBAu7nuq_cnLL86HFftU8Vi8NUiT__ehV_HOelmHQ5BTxhDPz_IcVB5Y/exec";
 
       const fetchAPI = async (payload) => {
@@ -480,7 +455,7 @@
           const y = checkDate.getFullYear();
           const m = String(checkDate.getMonth() + 1).padStart(2, '0');
           const d = String(checkDate.getDate()).padStart(2, '0');
-          const dateStr = `${y}-${m}-${d}`; //
+          const dateStr = `${y}-${m}-${d}`;
           if (tasks.filter(t => t.deadline === dateStr).length === 0) return dateStr;
           checkDate.setDate(checkDate.getDate() + 1);
         }
@@ -888,8 +863,4 @@
     root.render(<App />);
   </script>
 </body>
-
-
 </html>
-
-
