@@ -10,6 +10,10 @@
   <link rel="icon" sizes="192x192" href="https://i.ibb.co/7d6qj1ZW/22feaf5025f512a7.png">
   <link rel="shortcut icon" href="https://i.ibb.co/7d6qj1ZW/22feaf5025f512a7.png">
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  
   <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -102,17 +106,43 @@
           <div className="absolute left-6 top-1/2 -translate-y-1/2 w-24 h-8 bg-[#fddfe7]/40 blur-xl rounded-full"></div>
           <div className="flex flex-col justify-center ml-2 relative z-10">
             <div className="flex items-center gap-1">
-            <h1 className="text-2xl font-black italic tracking-tighter flex">
-                {"CHECK Q".split('').map((char, index) => (
-                  <span
-                    key={index}
-                    className={`bg-gradient-to-br from-[#f9bcce] to-[#fbd3de] bg-clip-text text-transparent drop-shadow-sm inline-block animate-text-wave pb-2 ${char === ' ' ? 'w-2.5' : 'pr-[1.5px]'}`}
-                    style={{ animationDelay: `${index * 0.1}s` }}
-                  >
-                    {char}
-                  </span>
-                ))}
-              </h1>
+           <h1 
+  className="text-m font-black italic tracking-tighter flex"
+  style={{ fontFamily: 'Prompt, sans-serif' }}
+>
+  {/* หั่นคำแบบจับกลุ่มสระและวรรณยุกต์ไว้ด้วยกันแทนการใช้ split('') */}
+  {["เ", "ช็", "ค", "ง", "า", "น", "ร้", "า","น","ม","า","เ","อ","ล"].map((char, index) => (
+    <span
+      key={index}
+      className={`bg-gradient-to-br from-[#f9bcce] to-[#fbd3de] bg-clip-text text-transparent drop-shadow-sm inline-block animate-text-wave pb-2 pr-[1.5px]`}
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      {char}
+    </span>
+  ))}
+</h1>
+              <button onClick={() => isAdmin ? setIsAdmin(false) : setShowAuthModal(true)} className={`px-1.5 py-0.5 ml-1 rounded-full text-[7px] font-black uppercase tracking-widest border shadow-sm transition-all active:scale-95 ${isAdmin ? 'bg-white/60 text-[#6CA9D6] border-[#FCF6DE]' : 'bg-gray-100/80 text-gray-400 border-gray-200'}`}>
+                {isAdmin ? 'Admin' : 'Guest'}
+              </button>
+            </div>
+            <div className="flex items-center gap-1.5 opacity-70">
+              <div className="w-3 h-[1px]" style={{ backgroundColor: COLORS.pinkDeep }}></div>
+              <p className="text-[8px] font-black tracking-[0.5em] uppercase" style={{ color: COLORS.purpleDeep }}>Check Q</p>
+            </div>
+          </div>
+          <div onClick={isAdmin ? handleImageUpload : undefined} className={`w-16 h-16 rounded-[1.25rem] bg-white border-2 border-white flex items-center justify-center relative overflow-hidden transition-transform ${isAdmin ? 'cursor-pointer hover:scale-105 active:scale-95' : ''}`}>
+            {profileImage ? (
+              <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
+            ) : (
+              <>
+                <div className="absolute inset-0 opacity-40" style={{ background: `linear-gradient(to top right, ${COLORS.pink}, ${COLORS.blue})` }}></div>
+                <span className="text-2xl relative z-10 select-none">🐰</span>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+    ));
               <button onClick={() => isAdmin ? setIsAdmin(false) : setShowAuthModal(true)} className={`px-1.5 py-0.5 ml-1 rounded-full text-[7px] font-black uppercase tracking-widest border shadow-sm transition-all active:scale-95 ${isAdmin ? 'bg-white/60 text-[#fbd3de] border-[#FCF6DE]' : 'bg-gray-100/80 text-gray-400 border-gray-200'}`}>
                 {isAdmin ? 'Admin' : 'Guest'}
               </button>
@@ -861,3 +891,4 @@
 
 
 </html>
+
